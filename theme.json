@@ -1,0 +1,10 @@
+{ 
+  "name": "Kovarys Theme", 
+  "settings": {}, 
+  "presets": [
+    { 
+      "name": "Kovarys Preset", 
+      "category": "Custom" 
+    }
+  ]
+}
