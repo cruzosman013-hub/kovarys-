@@ -1,0 +1,40 @@
+<div id="digital-clock">
+    <h1>Digital Clock</h1>
+    <div class="time" id="time-utc">UTC: <span id="utc-time"></span></div>
+    <div class="time" id="time-est">EST: <span id="est-time"></span></div>
+    <div class="time" id="time-gmt">GMT: <span id="gmt-time"></span></div>
+</div>
+
+<style>
+#digital-clock {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+time {
+    font-size: 24px;
+    margin: 10px 0;
+}
+</style>
+
+<script>
+function updateTime() {
+    const utc = new Date().toISOString().replace("T", " ").substring(0, 19);
+    document.getElementById('utc-time').innerText = utc;
+
+    const options = { timeZone: 'America/New_York', hour12: false };
+    const est = new Intl.DateTimeFormat('en-US', options).format(new Date());
+    document.getElementById('est-time').innerText = est;
+
+    options.timeZone = 'GMT';
+    const gmt = new Intl.DateTimeFormat('en-US', options).format(new Date());
+    document.getElementById('gmt-time').innerText = gmt;
+}
+
+setInterval(updateTime, 1000);
+updateTime(); // Initial call to set the time immediately
+</script>
